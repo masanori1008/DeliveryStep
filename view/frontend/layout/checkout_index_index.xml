@@ -1,0 +1,83 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <!-- The new step you add -->
+                                        <item name="my-new-step" xsi:type="array">
+                                            <item name="component" xsi:type="string">AHT_DeliveryStep/js/view/checkout-delivery-step</item>
+                                            <!--To display step content before shipping step "sortOrder" value should be < 1-->
+                                            <!--To display step content between shipping step and payment step  1 < "sortOrder" < 2 -->
+                                            <!--To display step content after payment step "sortOrder" > 2 -->
+                                            <item name="sortOrder" xsi:type="string">2</item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="custom-checkout-form-fieldset" xsi:type="array">
+                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                    <!-- the following display area is used in template (see below) -->
+                                                    <item name="displayArea" xsi:type="string">custom-checkout-form-fields</item>
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="date_field" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/date</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <!--customScope is used to group elements within a single form (e.g. they can be validated separately)-->
+                                                                <item name="customScope" xsi:type="string">customCheckoutForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/date</item>
+                                                            </item>
+                                                            <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                            <item name="dataScope" xsi:type="string">customCheckoutForm.date_field</item>
+                                                            <item name="label" xsi:type="string">Delivery Date</item>
+                                                            <item name="validation" xsi:type="array">
+                                                                <item name="required-entry" xsi:type="string">true</item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="textarea_field" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <!--customScope is used to group elements within a single form (e.g. they can be validated separately)-->
+                                                                <item name="customScope" xsi:type="string">customCheckoutForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/textarea</item>
+                                                            </item>
+                                                            <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                            <item name="dataScope" xsi:type="string">customCheckoutForm.textarea_field</item>
+                                                            <item name="label" xsi:type="string">Delivery Comment</item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="shippingAddress" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="shipping-address-fieldset" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="company" xsi:type="array">
+                                                                    <item name="validation" xsi:type="array">
+                                                                        <item name="min_text_length" xsi:type="number">0</item>
+                                                                        <item name="required-entry" xsi:type="boolean">true</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
